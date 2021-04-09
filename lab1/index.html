@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>lab_1</title>
+    <script src="js/vue.js"></script>
+    <script defer src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<div id="app">
+    <div>
+        <div>
+            <div v-if="list_name">
+                <h2>Ваше Имя</h2>
+                <p>{- {{name}} -}</p>
+                <input v-model="name">
+                <button @click="listVisibility=true,list_name=false">Ок</button>
+            </div>
+            <div v-if="listVisibility">
+                <h2>Список покупок</h2>
+                <input v-model="prod">
+                <button @click="add">Добавить</button>
+            </div>
+            <div>
+                <div>
+                    <ol>
+                        <li v-for="(product, index) in car" :class="{'item':product.done}" @click="product.done = !product.done" :key="product.id">
+                            {{ product.text }}
+                            <input type="button" class="del" @click="del (index)" value="удалить">
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
